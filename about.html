@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About & Team — NebriX (All-in-One)</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+  /* ------------------------
+     Design system / variables
+     ------------------------ */
+  :root{
+    --bg:#03031a;
+    --panel: rgba(255,255,255,0.04);
+    --muted:#f3f5f8;
+    --accent:#ccca38;
+    --accent-800:#48802e;
+    --success:#28c76f;
+    --warn:#ffcf33;
+    --danger:#ff6b6b;
+    --glass: rgba(59, 56, 56, 0.03);
+    --shadow: 0 12px 30px rgba(2,6,23,0.65);
+    --radius:12px;
+    --fz-sm:0.9rem;
+    --fz-md:1rem;
+    --fz-lg:1.25rem;
+    --gap:1.25rem;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body.about-page {
+    margin:0;
+    font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:
+      radial-gradient(800px 400px at 10% 10%, rgba(0,12,30,0.55), transparent),
+      linear-gradient(180deg,var(--bg), #050519 140%);
+    color:#e6eef6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+
+  .container{max-width:1100px;margin:0 auto;padding:0 20px}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--accent)}
+  .logo{height:42px;width:42px;border-radius:8px;object-fit:cover;background:linear-gradient(45deg,#002b36,#003a3a);display:flex;align-items:center;justify-content:center;color:#001b1b;font-weight:700}
+  .brand-name{font-weight:700;letter-spacing:0.4px}
+
+  /* nav */
+  .site-nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+  .site-nav a{color:inherit;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px}
+  .site-nav a:hover, .site-nav a.active{background:var(--glass);color:var(--accent)}
+  .nav-toggle{display:none;background:transparent;border:0}
+  .hamburger{display:block;width:22px;height:2px;background:var(--accent);position:relative}
+  .hamburger::after,.hamburger::before{content:'';position:absolute;left:0;width:22px;height:2px;background:var(--accent)}
+  .hamburger::before{top:-6px} .hamburger::after{top:6px}
+  @media (max-width:820px){
+    .site-nav{position:absolute;top:72px;left:0;right:0;background:linear-gradient(180deg,rgba(2,6,23,0.96), rgba(2,6,23,0.98));display:none;padding:18px}
+    .site-nav ul{flex-direction:column;gap:10px}
+    .nav-toggle{display:block}
+    .site-nav.open{display:block}
+  }
+
+  .site-footer{padding:24px 0;background:transparent;color:var(--muted);text-align:center}
+  .section-title{color:var(--accent);font-size:var(--fz-lg);margin-bottom:10px}
+
+  .card{background:var(--panel);border-radius:var(--radius);padding:10px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03)}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+  .grid-2{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+  @media (max-width:980px){.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
+
+  .hero{padding:60px 0 30px}
+  .hero-inner{display:flex;gap:24px;align-items:flex-start}
+  .hero-left{flex:1}
+  .hero-right{width:360px}
+
+  .hero-title{font-size:2rem;margin:0 0 12px 0}
+  .hero-sub{color:var(--muted);line-height:1.55;margin-bottom:16px}
+  .hero-cta .btn{margin-right:12px}
+
+  .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+  .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-800));color:#021;box-shadow:0 8px 20px rgba(0,255,213,0.06)}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+  .link-like{color:var(--accent);text-decoration:underline;cursor:pointer}
+
+  .muted{color:var(--muted)}
+  .small{font-size:.92rem}
+
+  /* Team cards */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:14px}
+  .team-card{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+  .avatar{height:64px;width:64px;border-radius:12px;background:linear-gradient(180deg,#021, #033);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
+  .team-meta h4{margin:0 0 6px 0}
+  .team-meta p{margin:0;color:var(--muted);font-size:.95rem}
+
+  /* Summary box */
+  .summary-wrap{display:flex;gap:18px;flex-direction:column}
+  .summary-actions{display:flex;gap:8px;align-items:center}
+  .summary-card{margin-top:12px}
+
+  /* download link small */
+  .download-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+
+  /* printable summary style (also used inside generated HTML) */
+  .summary-html{background:white;color:#001; padding:20px; font-family: 'Poppins', Arial, sans-serif; width:800px; margin:20px auto; border-radius:8px}
+  .summary-html h1{color:#062; margin-bottom:6px}
+  .summary-html h2{color:#00a;}
+  .summary-html p{color:#222;line-height:1.4}
+
+  /* accessibility focus */
+  [tabindex]:focus, button:focus, a:focus { outline:3px solid rgba(0,255,213,0.18); outline-offset:2px; }
+
+  /* small helpers */
+  .muted-block{color:var(--muted);font-size:.95rem}
+  .label { display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.02); color:var(--muted); font-weight:600; font-size:.85rem}
+ 
+  body.about-page {
+  background-image: url('images/nasa3.jpg');
+}
+  
+  </style>
+</head>
+<body class="about-page">
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="NebriX home">
+        <div class="logo">N</div>
+        <span class="brand-name">NebriX</span>
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-controls="nav" aria-expanded="false" aria-label="Open menu">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <nav id="nav" class="site-nav" role="navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="upload.html">Upload</a></li>
+          <li><a href="result.html">Results</a></li>
+          <li><a href="visual.html">Visualize</a></li>
+          
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <h1 class="hero-title">About NebriX — <span style="color:var(--accent)">AI for Exoplanets</span></h1>
+          <p class="hero-sub intro">NebriX is a prototype UI built for the NASA Space Apps Challenge. It demonstrates how open exoplanet datasets (Kepler, K2, TESS) can be combined with AI to classify signals as <strong>Confirmed</strong>, <strong>Candidate</strong> or <strong>False Positive</strong>. This single page includes a team section and a downloadable one-page project summary you can use in pitches.</p>
+
+          <div style="margin-top:14px" class="hero-cta">
+            <a class="btn primary" href="upload.html">Try NebriX</a>
+            <button id="print-summary" class="btn ghost">Print Summary</button>
+          </div>
+        </div>
+
+        <aside class="hero-right card">
+          <h4 class="section-title">Project Snapshot</h4>
+          <div class="muted-block">
+            <strong>Goal:</strong> Provide an easy-to-use frontend for exoplanet classification using NASA open data.<br>
+            <strong>Stack:</strong> HTML/CSS/Vanilla JS (frontend demo); recommend FastAPI + TensorFlow/PyTorch (backend).<br>
+            <strong>Deliverables:</strong> Upload → Analyze → Results → Visualize.
+          </div>
+
+          <div class="summary-card">
+            <h4 class="section-title">Project Summary</h4>
+            <div class="muted-block">Quick one-page summary available below — download as HTML or plain text for submissions and reports.</div>
+            <div class="download-list" style="margin-top:10px">
+              <button id="download-html" class="btn ghost">Download HTML</button>
+              <button id="download-txt" class="btn ghost">Download TXT</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container" style="padding-bottom:40px">
+      <div class="card">
+        <h3 class="section-title">Team & Contributors</h3>
+        <p class="muted">Core team and contributors who built the NebriX frontend and prototype workflows.</p>
+
+        <div class="team-grid" id="team-grid">
+          <!-- team cards populated by JS (placeholders provided) -->
+        </div>
+      </div>
+
+      <div style="height:10px"></div>
+
+      <div class="card" style="margin-top:16px">
+        <h3 class="section-title">Technical Notes</h3>
+        <p class="muted">NebriX frontend is intentionally lightweight (static HTML/CSS/JS). For production: add a backend endpoint (POST /api/predict) to accept multipart/form-data, run the model, and return structured JSON: <code>{ "predictions": [...], "chart": {...} }</code>. Ensure HTTPS, authentication, and storage for large datasets.</p>
+      
+      </div>
+    </section>
+  </main>
+
+ 
+
+  <!-- Inline JS: navbar, team data, summary generation + download/print -->
+  <script>
+  (function () {
+    // ---------------- Navbar toggle ----------------
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('nav-toggle');
+      const nav = document.getElementById('nav');
+      if (btn && nav) {
+        btn.addEventListener('click', () => {
+          const open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      }
+
+      // set active link (simple)
+      const links = document.querySelectorAll('.site-nav a');
+      links.forEach(a => {
+        try {
+          // compare by pathname to support local testing
+          const href = a.getAttribute('href');
+          const path = window.location.pathname.split('/').pop();
+          if (href === path || a.href === window.location.href) {
+            a.classList.add('active');
+          }
+        } catch (e) { /* ignore */ }
+      });
+
+      populateTeam();
+      wireSummaryButtons();
+    });
+
+    // ---------------- Team cards ----------------
+    function populateTeam(){
+      const team = [
+        { name: "Pallavi V Patil", role: "Frontend & UX", bio: "Lead frontend developer; designed the NebriX UI & interactions.", photo: "" },
+        { name: "A. Researcher", role: "ML Scientist", bio: "Built model architecture and training pipeline.", photo: "" },
+        { name: "B. DevOps", role: "Deployment & Infra", bio: "Containerization, deployment and CI/CD.", photo: "" },
+        { name: "C. Data", role: "Data Engineer", bio: "Prepared Kepler/TESS datasets and preprocessing.", photo: "" },
+             { name: "C. Data", role: "Data Engineer", bio: "Prepared Kepler/TESS datasets and preprocessing.", photo: "" },
+      { name: "C. Data", role: "Data Engineer", bio: "Prepared Kepler/TESS datasets and preprocessing.", photo: "" },
+            ];
+      const grid = document.getElementById('team-grid');
+      if (!grid) return;
+      grid.innerHTML = "";
+      team.forEach(member => {
+        const card = document.createElement('div'); card.className = 'team-card';
+        const avatar = document.createElement('div'); avatar.className = 'avatar';
+        avatar.textContent = (member.name.split(' ').map(n=>n[0]).join('').slice(0,2)).toUpperCase();
+        const meta = document.createElement('div'); meta.className = 'team-meta';
+        const h4 = document.createElement('h4'); h4.textContent = member.name;
+        const r = document.createElement('div'); r.textContent = member.role; r.className = 'muted';
+        const p = document.createElement('p'); p.textContent = member.bio;
+        meta.appendChild(h4); meta.appendChild(r); meta.appendChild(p);
+        card.appendChild(avatar); card.appendChild(meta);
+        grid.appendChild(card);
+      });
+    }
+
+    // ---------------- Summary content builder ----------------
+    function buildSummaryObject() {
+      const summary = {
+        title: "NebriX — AI for Exoplanets",
+        subtitle: "Prototype frontend for NASA Space Apps Challenge",
+        date: new Date().toLocaleDateString(),
+        goal: "Provide a lightweight, user-friendly interface that lets researchers and enthusiasts upload exoplanet datasets, run ML classification, and explore results with interactive visualizations.",
+        stack: "Frontend: HTML/CSS/Vanilla JS (demo). Recommended Backend: FastAPI + TensorFlow/PyTorch.",
+        features: [
+          "Upload CSV/JSON (Kepler/K2/TESS) with preview",
+          "AI classification: Confirmed / Candidate / False Positive with confidence scores",
+          "Interactive visualizations: folded light curves, scatter plots",
+          "Downloadable CSV of predictions and exportable charts",
+          "Local demo mode; easy backend integration"
+        ],
+        team: [
+          { name: "Pallavi V Patil", role: "Frontend & UX" },
+          { name: "A. Researcher", role: "ML Scientist" },
+          { name: "B. DevOps", role: "Deployment & Infra" },
+          { name: "C. Data", role: "Data Engineer" }
+        ],
+        contact: "Add your email or team contact here",
+        note: "This is a demo frontend. To enable real predictions, connect to a secure backend API and provide trained ML models."
+      };
+      return summary;
+    }
+
+    // Build HTML string for the one-page summary
+    function buildSummaryHTML(summary) {
+      const featuresList = summary.features.map(f => `<li>${escapeHtml(f)}</li>`).join('');
+      const teamList = summary.team.map(t => `<li><strong>${escapeHtml(t.name)}</strong> — ${escapeHtml(t.role)}</li>`).join('');
+      return `
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>${escapeHtml(summary.title)}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;color:#111;line-height:1.4;margin:0;padding:18px;background:#fff}
+    .wrap{max-width:780px;margin:18px auto;padding:20px;border-radius:6px;border:1px solid #ddd}
+    h1{color:#0b3; margin-bottom:6px}
+    h2{color:#00a}
+    .muted{color:#444}
+    .small{font-size:0.95rem;color:#333}
+    ul{margin-left:18px}
+    .meta{margin-top:12px;padding:10px;background:#f7f7f7;border-radius:6px;color:#333}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>${escapeHtml(summary.title)}</h1>
+    <div class="small">${escapeHtml(summary.subtitle)} — ${escapeHtml(summary.date)}</div>
+    <div class="meta">
+      <strong>Goal:</strong> ${escapeHtml(summary.goal)}
+    </div>
+
+    <h2 style="margin-top:12px">Features</h2>
+    <ul>${featuresList}</ul>
+
+    <h2>Tech Stack</h2>
+    <p class="muted">${escapeHtml(summary.stack)}</p>
+
+    <h2>Team</h2>
+    <ul>${teamList}</ul>
+
+    <h2>Contact</h2>
+    <p class="muted">${escapeHtml(summary.contact)}</p>
+
+    <hr/>
+    <p class="muted small">${escapeHtml(summary.note)}</p>
+  </div>
+</body>
+</html>
+      `;
+    }
+
+    // Build TXT summary
+    function buildSummaryText(summary) {
+      const features = summary.features.map((f,i) => `${i+1}. ${f}`).join('\n');
+      const team = summary.team.map(t => `- ${t.name} — ${t.role}`).join('\n');
+      return `${summary.title}
+${summary.subtitle}
+Date: ${summary.date}
+
+GOAL:
+${summary.goal}
+
+FEATURES:
+${features}
+
+TECH STACK:
+${summary.stack}
+
+TEAM:
+${team}
+
+CONTACT:
+${summary.contact}
+
+NOTE:
+${summary.note}
+`;
+    }
+
+    // escape helper to avoid injected HTML
+    function escapeHtml(s){
+      if (!s) return '';
+      return String(s).replace(/[&<>"']/g, function(m){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[m]);
+      });
+    }
+
+    // ---------------- Download & Print wiring ----------------
+    function wireSummaryButtons(){
+      const dHtml = document.getElementById('download-html');
+      const dTxt = document.getElementById('download-txt');
+      const printBtn = document.getElementById('print-summary');
+
+      dHtml?.addEventListener('click', () => {
+        const summary = buildSummaryObject();
+        const html = buildSummaryHTML(summary);
+        downloadBlob(html, 'NebriX_Project_Summary.html', 'text/html;charset=utf-8');
+      });
+
+      dTxt?.addEventListener('click', () => {
+        const summary = buildSummaryObject();
+        const text = buildSummaryText(summary);
+        downloadBlob(text, 'NebriX_Project_Summary.txt', 'text/plain;charset=utf-8');
+      });
+
+      printBtn?.addEventListener('click', () => {
+        const summary = buildSummaryObject();
+        const html = buildSummaryHTML(summary);
+        // open in new window and print
+        const win = window.open('', '_blank', 'noopener');
+        if (!win) { alert('Popup blocked — please allow popups to use Print.'); return; }
+        win.document.write(html);
+        win.document.close();
+        win.focus();
+        setTimeout(() => {
+          try { win.print(); } catch (e) { /* ignore */ }
+        }, 500);
+      });
+    }
+
+    function downloadBlob(content, filename, mime) {
+      const blob = new Blob([content], { type: mime || 'application/octet-stream' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
+    }
+
+  })();
+  </script>
+</body>
+</html>

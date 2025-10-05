@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Visualize - NebriX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body class="visual-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/logo.png" alt="" class="logo" /><span class="brand-name">NebriX</span></a>
+      <button id="nav-toggle" class="nav-toggle"><span class="hamburger"></span></button>
+      <nav id="nav" class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="upload.html">Upload</a></li>
+          <li><a href="result.html">Results</a></li>
+      
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container" style="padding-top:100px">
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="section-title">Orbital Period vs Planetary Radius</h3>
+          <div id="scatterPlot" style="height:360px"></div>
+        </div>
+        <div class="card">
+          <h3 class="section-title">Example Folded Light Curve</h3>
+          <div id="lightCurve" style="height:360px"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+ 
+
+  <script src="visual.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

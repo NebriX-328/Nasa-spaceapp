@@ -1,0 +1,163 @@
+:root{
+  --bg:#03030a;
+  --panel: rgba(255,255,255,0.04);
+  --muted:#c7c9ce;
+  --accent:#cca333;
+  --accent-800:#94ece1;
+  --success:#28c76f;
+  --warn:#ffcf33;
+  --danger:#ff6b6b;
+  --glass: rgba(255,255,255,0.03);
+  --shadow: 0 12px 30px rgba(2,6,23,0.65);
+  --radius:12px;
+  --fz-sm:0.9rem;
+  --fz-md:1rem;
+  --fz-lg:1.25rem;
+  --gap:1.25rem;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(0,12,30,0.5), transparent), linear-gradient(180deg,var(--bg), #050519 140%), url('../assets/space-bg.jpg') center/cover no-repeat;
+  color:#e6eef6;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+
+.back-video{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* makes sure the video fills the entire area */
+  z-index: -1;
+}
+
+/* container/grid */
+.container{max-width:1160px;margin:0 auto;padding:0 20px}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--accent)}
+.logo{height:42px;width:42px;border-radius:8px;object-fit:cover}
+.brand-name{font-weight:700;letter-spacing:0.4px}
+
+/* navbar */
+.site-nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+.site-nav a{color:inherit;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px}
+.site-nav a:hover, .site-nav a.active{background:var(--glass);color:var(--accent)}
+.nav-toggle{display:none;background:transparent;border:0}
+.hamburger{display:block;width:22px;height:2px;background:var(--accent);position:relative}
+.hamburger::after,.hamburger::before{content:'';position:absolute;left:0;width:22px;height:2px;background:var(--accent)}
+.hamburger::before{top:-6px} .hamburger::after{top:6px}
+
+/* mobile nav */
+@media (max-width:800px){
+  .site-nav{position:absolute;top:72px;left:0;right:0;background:linear-gradient(180deg,rgba(2,6,23,0.96), rgba(2,6,23,0.98));display:none;padding:18px}
+  .site-nav ul{flex-direction:column;gap:10px}
+  .nav-toggle{display:block}
+  .site-nav.open{display:block}
+}
+
+/* header/footer */
+.site-footer{padding:24px 0;background:transparent;color:var(--muted);text-align:center}
+.section-title{color:var(--accent);font-size:var(--fz-lg);margin-bottom:10px}
+
+/* cards & layout */
+.card{background:var(--panel);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.grid-2{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+@media (max-width:980px){.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
+
+/* hero */
+.hero{padding:90px 0}
+.hero-inner{display:flex;gap:24px;align-items:center}
+.hero-left{flex:1}
+.hero-right{width:360px}
+.hero-title{font-size:2.2rem;margin:0 0 12px 0}
+.hero-sub{color:var(--muted);line-height:1.5;margin-bottom:16px}
+.hero-cta .btn{margin-right:12px}
+
+/* upload box */
+.upload-box{border:2px dashed rgba(0,255,213,0.15);border-radius:14px;padding:28px;cursor:pointer;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);display:flex;align-items:center;gap:16px}
+.upload-inner{display:flex;gap:14px;align-items:center}
+.upload-illustration{width:54px;height:54px;opacity:0.95}
+.upload-text strong{color: #ffffe3;}
+.link-like{color:var(--accent);text-decoration:underline;cursor:pointer}
+.muted{color:var(--muted)}
+.small{font-size:.92rem}
+
+/* preview table */
+.preview-table{overflow:auto;border-radius:10px}
+.preview-table table{width:100%;border-collapse:collapse}
+.preview-table th, .preview-table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left;font-size:0.95rem}
+.preview-table thead th{background:rgba(0,255,213,0.06);color:var(--accent)}
+
+/* buttons, inputs */
+.btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-800));color:#021;box-shadow:0 8px 20px rgba(0,255,213,0.06)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+.input{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+
+/* progress */
+.progress{background:rgba(255,255,255,0.03);height:12px;border-radius:8px;flex:1;overflow:hidden}
+.progress-bar{width:0%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-800));transition:width .25s}
+
+/* results styles */
+.full-width{width:100%}
+#results-table th, #results-table td{padding:10px;border-bottom:1px dashed rgba(255,255,255,0.02);text-align:left}
+#results-table td.confirmed{background:rgba(40,199,111,0.08);color:var(--success);font-weight:600}
+#results-table td.candidate{background:rgba(255,207,51,0.08);color:var(--warn);font-weight:600}
+#results-table td.false-positive{background:rgba(255,107,107,0.06);color:var(--danger);font-weight:600}
+
+/* utility */
+.link{color:var(--accent);text-decoration:underline}
+.card:hover{transform:translateY(-6px);transition:all .18s ease}
+
+/* Add a dark overlay for text readability */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+body.upload-page {
+  background-image: url('images/nasa3.jpg');
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+body.result-page {
+  background-image: url('images/nasa3.jpg');
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+body.about-page {
+  background-image: url('images/nasa3.jpg');
+}
+
+body.visual-page {
+  background-image: url('images/nasa3.jpg');
+}

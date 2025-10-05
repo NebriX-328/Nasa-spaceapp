@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Upload - NebriX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="upload-page">
+
+
+  <!-- Header / Navbar (same structure as index) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="images/logo.jpg" alt="" class="logo" /><span class="brand-name">NebriX</span></a>
+      <button id="nav-toggle" class="nav-toggle" aria-controls="nav" aria-expanded="false"><span class="hamburger"></span></button>
+      <nav id="nav" class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+     
+          <li><a href="result.html">Results</a></li>
+          <li><a href="visual.html">Visualize</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container" style="padding-top:100px;">
+      <div class="grid-2">
+        <!-- Upload card -->
+        <div class="card upload-card">
+          <h3 class="section-title">Upload your data</h3>
+
+          <div id="upload-box" class="upload-box" role="button" tabindex="0" aria-label="Upload file">
+            <div class="upload-inner">
+              <img src="images/file.jpg" alt="" class="upload-illustration" />
+              <div class="upload-text">
+                <strong>Drag & drop</strong> or <span id="browse-link" class="link-like">browse files</span>
+                <div class="muted small" id="file-meta">Accepted: .csv, .json · Max 10 MB</div>
+              </div>
+            </div>
+            <input id="file-input" type="file" accept=".csv,.json" style="display:none" />
+          </div>
+
+          <div id="upload-state" class="muted small" aria-live="polite" style="margin-top:10px">No file selected</div>
+
+          <div id="preview-wrapper" style="margin-top:16px;display:none">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <div class="small muted">Preview (first 10 rows)</div>
+              <div><button id="clear-upload" class="btn ghost small">Clear</button></div>
+            </div>
+            <div id="preview" class="preview-table"></div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:12px;margin-top:16px">
+            <button id="submit-btn" class="btn primary">Analyze</button>
+            <div id="upload-progress" class="progress" aria-hidden="true" style="display:none">
+              <div class = "progress-bar" ></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right info / tips -->
+        <aside class="card">
+          <h4 class="section-title">Tips for uploads</h4>
+          <ul>
+            <li class="muted">Include columns like <code>name</code>, <code>orbitalPeriod</code>, <code>radius</code> when available.</li>
+            <li class="muted">If your JSON already has <code>prediction</code> & <code>confidence</code>, NebriX will reuse them.</li>
+            <li class="muted">Files are processed locally in demo mode. Connect to the backend to enable server analysis.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  
+
+  <!-- libraries -->
+  <script src="libs/papaparse.min.js"></script>
+  <!-- page script -->
+  <script src="upload.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

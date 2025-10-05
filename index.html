@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NebriX — Discover Exoplanets with AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <video autoplay loop muted plays-inline class="back-video">
+    <source src="images/nasa1.mp4" type="video/mp4">
+  </video>
+  <!-- Header / Navbar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="NebriX home">
+        <img src="images/logo.jpg" alt="" class="logo" />
+        <span class="brand-name">NebriX</span>
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-controls="nav" aria-expanded="false" aria-label="Open menu">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav id="nav" class="site-nav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="upload.html">Upload</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="visualize.html">Visualize</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <h1 class="hero-title">Discover Exoplanets with <span class="accent">NebriX</span></h1>
+          <p class="hero-sub intro">
+            NebriX uses NASA open data and AI to classify signals as <strong>Confirmed</strong>, <strong>Candidate</strong> or <strong>False Positive</strong>.
+            Upload datasets, visualize light curves, and explore discoveries.
+          </p>
+          <div class="hero-cta">
+            <a class="btn primary" href="upload.html">Get Started</a>
+            <a class="btn ghost" href="about.html">Why NebriX?</a>
+          </div>
+        </div>
+
+        <div class="hero-right card">
+          <h4 class="section-title">How it works</h4>
+          <ol class="how-steps">
+            <li><strong>Upload</strong> CSV or JSON from Kepler/TESS/K2</li>
+            <li><strong>Analyze</strong> with hybrid AI (tabular + light-curve model)</li>
+            <li><strong>Explore</strong> results, charts and export</li>
+          </ol>
+          <div class="muted small">Demo mode: files processed locally; connect to the backend to enable real model runs.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features container">
+      <h3 class="section-title">Key features</h3>
+      <div class="grid-3">
+        <div class="card">
+          <h4>Intuitive Upload</h4>
+          <p>Drag & drop or browse for CSV/JSON files. Quick preview before analysis.</p>
+        </div>
+        <div class="card">
+          <h4>Expert Visuals</h4>
+          <p>Interactive folded light curves and scatter plots to inspect each candidate.</p>
+        </div>
+        <div class="card">
+          <h4>Share & Export</h4>
+          <p>Download CSV of predictions and export charts for reports or presentations.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>&copy; 2025 NebriX — NASA Space Apps Challenge</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

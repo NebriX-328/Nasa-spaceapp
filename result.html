@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Results - NebriX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="result-page">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/logo.png" alt="" class="logo" /><span class="brand-name">NebriX</span></a>
+      <button id="nav-toggle" class="nav-toggle"><span class="hamburger"></span></button>
+      <nav id="nav" class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="upload.html">Upload</a></li>
+         
+          <li><a href="visual.html">Visualize</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container" style="padding-top:100px">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div>
+            <h3 class="section-title">AI Predictions</h3>
+            <div class="muted small">Color-coded: green = confirmed, yellow = candidate, red = false positive</div>
+          </div>
+
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="search" placeholder="Search by name..." class="input small" />
+            <select id="filter-class" class="input small">
+              <option value="">All</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="Candidate">Candidate</option>
+              <option value="False Positive">False Positive</option>
+            </select>
+            <button id="sort-confidence" class="btn ghost small">Sort by confidence ↓</button>
+            <button id="export-csv" class="btn ghost small">Export CSV</button>
+          </div>
+        </div>
+
+        <div id="results-container" class="preview-table" style="overflow:auto">
+          <table id="results-table" class="full-width">
+            <thead>
+              <tr><th>Name</th><th>Prediction</th><th>Confidence</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+ 
+
+  <script src="results.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
