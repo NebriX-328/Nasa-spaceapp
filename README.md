@@ -55,4 +55,5 @@ Special thanks to NASA, the Space Apps Challenge Team, and open-source contribut
 
 📽 Demo Video
 🎥 Watch on YouTube
- (add once uploaded)
+https://youtu.be/HuJlpPzIzWc?si=Ij-VGOFRBLTTULTc
+https://nebrix-328.github.io/Nasa-spaceapp/index.html
