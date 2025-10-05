@@ -1,6 +1,6 @@
-# nebrix
+Project Nebrix
 nasa
-🌌 NebriX – AI-Powered Exoplanet Detection Platform
+"NebriX – AI-Powered Exoplanet Detection Platform"
 
 NebriX is an AI/ML-powered web application designed to identify exoplanets using NASA’s open-source Kepler, K2, and TESS datasets. The platform combines machine learning with an interactive web interface to make exoplanet discovery accessible for both researchers and enthusiasts.
 
@@ -36,55 +36,23 @@ Home	Overview of NebriX and its purpose
 Upload	Allows users to upload CSV/JSON datasets
 Results	Displays prediction results and confidence scores
 About	Explains methodology, datasets, and team details
+
 🖼 UI Highlights
-
 NASA-themed dark mode design
-
 Responsive layout for all devices
-
 Smooth animations and intuitive navigation
-
 Space-inspired visuals and icons
 
 📊 Features
-
 Data upload via drag-and-drop or file browser
-
 Real-time feedback and result visualization
-
 Confidence scoring and classification colors
-
 Background video and themed visuals
-
-🧩 How to Run Locally
-
-Clone the repository:
-
-git clone https://github.com/<your-username>/NebriX.git
-
-
-Navigate to the project folder:
-
-cd NebriX
-
-
-Open index.html in your browser to view the website locally.
-
-🧑‍💻 Team NebriX
-
-Project Lead: [Your Name]
-
-Frontend Development: [Name]
-
-AI/ML Model: [Name]
-
-UI/UX Design: [Name]
 
 🌠 Acknowledgements
 
 Special thanks to NASA, the Space Apps Challenge Team, and open-source contributors for providing datasets and inspiration.
 
 📽 Demo Video
-
 🎥 Watch on YouTube
  (add once uploaded)
